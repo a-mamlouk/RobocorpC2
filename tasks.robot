@@ -129,12 +129,12 @@ Create a ZIP file of the receipts
     Archive Folder With ZIP    ${output}${/}receipts    ${zip_file}    recursive=True    include=*.pdf
 
 ask the user for some input
-    #Add heading    Insert URL
-    #Add text input    URL    label=URL-Address
-    #...    placeholder=Enter URL here
-    #...    rows=1
-    #${result}=    Run dialog
-    #Insert URL${result.URL}
+    Add heading    Insert URL
+    Add text input    URL    label=URL-Address
+    ...    placeholder=Enter URL here
+    ...    rows=1
+    ${result}=    Run dialog
+
     #RETURN    ${result.URL}
     #########
     ${secret}=    Get Secret    url
