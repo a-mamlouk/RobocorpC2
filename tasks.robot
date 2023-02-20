@@ -18,7 +18,7 @@ Library             RPA.Robocorp.Vault
 
 *** Variables ***
 ${url}=         https://robotsparebinindustries.com/#/robot-order
-#${csv_url}=    https://robotsparebinindustries.com/orders.csv
+#${csv_url}=    https://robotsparebinindustries.com/orders.csv for training purpose
 ${output}=      ${CURDIR}${/}output
 ${zip_file}     ${output}${/}pdf_archive.zip
 
@@ -59,7 +59,6 @@ Fill the form
     [Arguments]    ${myrow}
 
     # Extract the values from the CSV
-
     Set Local Variable    ${head}    ${myrow}[Head]
     Set Local Variable    ${body}    ${myrow}[Body]
     Set Local Variable    ${legs}    ${myrow}[Legs]
@@ -75,10 +74,8 @@ Fill the form
     Wait Until Element Is Visible    ${input_head}
     Wait Until Element Is Enabled    ${input_head}
     Select From List By Value    ${input_head}    ${head}
-
     Wait Until Element Is Enabled    ${input_body}
     Select Radio Button    ${input_body}    ${body}
-
     Wait Until Element Is Enabled    ${input_legs}
     Input Text    ${input_legs}    ${legs}
     Wait Until Element Is Enabled    ${input_address}
@@ -116,6 +113,8 @@ Embed the robot screenshot to the receipt PDF file
     [Arguments]    ${SC}    ${PDF}
 
     Add Watermark Image To PDF    ${SC}    ${PDF}    ${PDF}
+
+    #method did work but i wanted to keep the code
     #Open Pdf    ${PDF}
     #@{file}=    Create List    ${SC}:align=center
     #Add Files To PDF    ${file}    ${PDF}    ${True}
@@ -136,7 +135,7 @@ ask the user for some input
     ${result}=    Run dialog
 
     #RETURN    ${result.URL}
-    #########
+    # in case i want to use the code from input not from vault
     ${secret}=    Get Secret    url
     Log    ${secret}[CSV_url]
     RETURN    ${secret}[CSV_url]
