@@ -18,7 +18,8 @@ Library             RPA.Robocorp.Vault
 
 *** Variables ***
 ${url}=         https://robotsparebinindustries.com/#/robot-order
-#${csv_url}=    https://robotsparebinindustries.com/orders.csv for training purpose
+#for training purpose url
+#${csv_url}=    https://robotsparebinindustries.com/orders.csv
 ${output}=      ${CURDIR}${/}output
 ${zip_file}     ${output}${/}pdf_archive.zip
 
